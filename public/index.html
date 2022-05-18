@@ -66,8 +66,7 @@ function gtag_report_conversion(url) {
                     data-item-custom1-type="textarea"
                     data-item-custom1-required="true"
                     
-                    data-item-custom10-name="Number of digits + letters in Order (do not change)"
-                   
+                    data-item-custom10-name="# of alphanumerics (do not change)"
                     data-item-custom10-options="1[+7.65]|2[+15.3]|3[+22.95]|4[+30.6]|5[+38.25]|6[+45.9]|7[+53.55]
                       |8[+61.2]|9[+68.85]|10[+76.5]|11[+84.15]|12[+91.8]|13[+99.45]|14[+107.1]|15[+114.75]|16[+122.4]|17[+130.05]|18[+137.7]|19[+145.35]|20[+153]|21[+160.65]
                       |22[+168.3]|23[+175.9]|24[+183.6]|25[+191.25]|26[+198.9]|27[+206.55]|28[+214.2]|29[+221.85]|30[+229.5]"
@@ -97,7 +96,20 @@ function gtag_report_conversion(url) {
                     data-item-custom8-name="Phone Number"
                     data-item-custom8-required="true"
                     data-item-custom13-name="Any Special Instructions/Requests?"
-                    da
+                    
+                    data-item-custom5-name="LED Backlit"
+                    data-item-custom5-options="Yes|No"
+                    data-item-custom5-required="true"
+
+                    data-item-custom15-name="# of LED alphanumerics (do not change)"
+                    data-item-custom15-options="1[+7.65]|2[+15.3]|3[+22.95]|4[+30.6]|5[+38.25]|6[+45.9]|7[+53.55]
+                      |8[+61.2]|9[+68.85]|10[+76.5]|11[+84.15]|12[+91.8]|13[+99.45]|14[+107.1]|15[+114.75]|16[+122.4]|17[+130.05]|18[+137.7]|19[+145.35]|20[+153]|21[+160.65]
+                      |22[+168.3]|23[+175.9]|24[+183.6]|25[+191.25]|26[+198.9]|27[+206.55]|28[+214.2]|29[+221.85]|30[+229.5]"
+
+                    
+
+
+
  >*Add to cart
                   </v-btn>
         </div>
@@ -106,8 +118,10 @@ function gtag_report_conversion(url) {
     <!-- built files will be auto injected -->
     
   </body>
-
-   <div hidden id="snipcart" data-api-key="ZTY3MjczMmQtOGU2ZC00YTI3LTgxZTItMTQxYjcxMTM3N2M5NjM3MzMzODI4NTM5NjgyMzkx"></div>
+  <!-- Production -->
+   <!-- <div hidden id="snipcart" data-api-key="ZTY3MjczMmQtOGU2ZC00YTI3LTgxZTItMTQxYjcxMTM3N2M5NjM3MzMzODI4NTM5NjgyMzkx"></div> -->
+<!-- Test site -->
+   <div hidden id="snipcart" data-api-key="ZmVlNjMzY2MtN2NhYy00NmY4LWFmNDItMzE1MmY0YjY2OWU5NjM3MzMzODI4NTM5NjgyMzkx"></div>
 <script src="https://cdn.snipcart.com/themes/v3.0.22/default/snipcart.js"></script>
 
 </script>

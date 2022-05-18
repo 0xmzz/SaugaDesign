@@ -51,13 +51,14 @@
                     ></v-card>
                     <div>
                   
-                    <h5 class="green1">Winter Sale 15% off</h5>
+                    <!-- <h5 class="green1">Winter Sale 15% off</h5> -->
                     
                       <h5 class="inputprice"> {{ calculateCost }}</h5>
                     
-                    <div class="input">
+                   <!-- Winter discount -->
+                    <!-- <div class="input">
                       {{ calculateCostdiscount }}
-                    </div>
+                    </div> -->
                       
                     
                     
@@ -146,6 +147,29 @@
 
                     <v-row>
                       <v-select
+                        v-model="isLED"
+                        :items="items.LED"
+                        :item-value="items.LED"
+                        label="LED Backlit"
+                        dense
+                        :rules="Rules"
+                        required
+                      ></v-select>
+                    </v-row> 
+
+
+                       
+                    <v-col>
+                    <v-img
+                    width="40vh"
+                        aspect-ratio="4"
+                        src="../../assets/led.jpeg"
+                      ></v-img>
+                      </v-col>
+                    
+
+                    <v-row>
+                      <v-select
                         v-model="isthickness"
                         :items="items.thickness"
                         :item-value="items.thickness"
@@ -223,7 +247,7 @@
                     data-item-custom1-type="textarea"
                     data-item-custom1-required="true"
                     :data-item-custom1-value="overlay"
-                    data-item-custom10-name="Number of digits + letters in Order (do not change)"
+                    data-item-custom10-name="# of alphanumerics (do not change)"
                     :data-item-custom10-value="isNumber"
                     data-item-custom10-options="1[+7.65]|2[+15.3]|3[+22.95]|4[+30.6]|5[+38.25]|6[+45.9]|7[+53.55]
                       |8[+61.2]|9[+68.85]|10[+76.5]|11[+84.15]|12[+91.8]|13[+99.45]|14[+107.1]|15[+114.75]|16[+122.4]|17[+130.05]|18[+137.7]|19[+145.35]|20[+153]|21[+160.65]
@@ -240,6 +264,19 @@
                     data-item-custom9-options="5 Inch|6 Inch|7 Inch|8 Inch|8.5 Inch|9.5 Inch +$10[+10]|10.5 Inch +$20[+20]|12 Inch +$30[+30]|Custom"
                     data-item-custom9-required="true"
                     :data-item-custom9-value="isHeight"
+                    
+                    data-item-custom5-name="LED Backlit"
+                    data-item-custom5-options="Yes|No"
+                    data-item-custom5-required="true"
+                    :data-item-custom5-value="isLED"
+
+                     data-item-custom15-name="# of LED alphanumerics (do not change)"
+                    :data-item-custom15-value="isNumberLED"
+                    data-item-custom15-options="1[+7.65]|2[+15.3]|3[+22.95]|4[+30.6]|5[+38.25]|6[+45.9]|7[+53.55]
+                      |8[+61.2]|9[+68.85]|10[+76.5]|11[+84.15]|12[+91.8]|13[+99.45]|14[+107.1]|15[+114.75]|16[+122.4]|17[+130.05]|18[+137.7]|19[+145.35]|20[+153]|21[+160.65]
+                      |22[+168.3]|23[+175.9]|24[+183.6]|25[+191.25]|26[+198.9]|27[+206.55]|28[+214.2]|29[+221.85]|30[+229.5]"
+
+
                    data-item-custom14-name="Acrylic Thickness"
                     data-item-custom14-options="3mm|6mm +$40 [+40]"
                     data-item-custom14-required="true"
@@ -262,13 +299,13 @@
                   
                     <div>
                   
-                    <h4 class="green1">Winter Sale 15% off</h4>
+                    <!-- <h4 class="green1">Winter Sale 15% off</h4> -->
                     <div class="inputprice">
                       {{ calculateCost }}
                       </div>
-                    <div class="input">
+                    <!-- <div class="input">
                       {{ calculateCostdiscount }}
-                    </div>
+                    </div> -->
                       
                     
                     
@@ -330,6 +367,8 @@
             :width="600"
             :height="200"
             :items="[
+
+           
               {
                 id: 'someid1',
                 src:
@@ -576,6 +615,7 @@ export default {
         "10.5 Inch +$20",
         "12 Inch +$30",
       ],
+      LED: ["Yes", "No"],
       install: ["Yes", "No"],
       location: [
         "Halton +$100",
@@ -596,6 +636,7 @@ export default {
     // isSurface: "",
 
     isHeight: "8.5 Inch",
+    isLED: "No",
     isDeliver: "",
     isthickness: "",
     isInstall: "",
@@ -686,31 +727,61 @@ export default {
       return this.isColor.color;
     },
 
-    calculateCost: function() {
+//Cost per letter
+    costLength: function() {
       var overlayText = this.overlay;
       var rmSpace = overlayText.split(" ").join("");
+
+      if (this.isLED == "Yes") {
+      
+      return rmSpace.length * 15.3;
+    } else {
+     
+      return rmSpace.length * 7.65;
+    }
+    },
+
+    // costLED: function() {
+    //    {
+    //     return 0;
+    //   }
+
+    calculateCost: function() {
+      // var overlayText = this.overlay;
+      // var rmSpace = overlayText.split(" ").join("");
 
       var costDec =
         this.cost +
         this.LetterHeight +
         this.LocationPrice +
         this.Thickness +
-        rmSpace.length * 7.65;
+        this.costLength;
       return "$" + costDec.toFixed(2);
     },
-    calculateCostdiscount: function() {
+
+    // This function is for winter discount calculation
+
+    // calculateCostdiscount: function() {
+    //   var overlayText = this.overlay;
+    //   var rmSpace = overlayText.split(" ").join("");
+
+    //   var costDec =
+    //     this.cost +
+    //     this.LetterHeight +
+    //     this.LocationPrice +
+    //     this.Thickness +
+    //     rmSpace.length * 7.65;
+    //   return "$" + (costDec * 0.85).toFixed(2);
+    // },
+
+  //FOr snipcart to calculate cost per letter
+    isNumber: function() {
       var overlayText = this.overlay;
       var rmSpace = overlayText.split(" ").join("");
-
-      var costDec =
-        this.cost +
-        this.LetterHeight +
-        this.LocationPrice +
-        this.Thickness +
-        rmSpace.length * 7.65;
-      return "$" + (costDec * 0.85).toFixed(2);
+      return rmSpace.length;
     },
-    isNumber: function() {
+
+  isNumberLED: function() {
       var overlayText = this.overlay;
       var rmSpace = overlayText.split(" ").join("");
       return rmSpace.length;
@@ -1179,8 +1250,9 @@ export default {
   text-align: center;
 }
 .inputprice {
-  color: red;
-  text-decoration: line-through;
+  color: rgb(0, 255, 98);
+  font-size: 3vh;
+  /* text-decoration: line-through; */
 }
 .inputpricebutton {
   text-decoration: line-through;
