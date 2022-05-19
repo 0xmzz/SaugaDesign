@@ -261,10 +261,10 @@ module.exports = {
       } else return "snipcart-add-item";
     },
     call() {
-      window.open("tel:6474084915");
+      window.open("tel:4165530850");
     },
     whatsappfunc: function () {
-      return (location.href = "https://wa.me/14168220044");
+      return (location.href = "https://wa.me/4165530850");
     },
   },
 };

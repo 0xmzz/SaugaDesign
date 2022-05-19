@@ -283,7 +283,7 @@
                     :data-item-custom14-value="isthickness"
 
                      data-item-custom7-name="Installation Locaton"
-                    data-item-custom7-options="N/A|Halton +$100[+100]|Hamilton +$120[+120]|Peel +$100[+100]|City of Toronto +$120[+120]|York +$120[+120]|Durham +$140[+140]|Kitchener/Waterloo/Guelph/Cambridge/Other +$140[+140]"
+                    data-item-custom7-options="N/A|Halton +$120[+120]|Hamilton +$140[+140]|Peel +$120[+120]|City of Toronto +$140[+140]|York +$140[+140]|Durham +$150[+150]|Kitchener/Waterloo/Guelph/Cambridge/Other +$150[+150]"
 
                     data-item-custom7-required="true"
                     :data-item-custom7-value= "isLocation"
@@ -321,6 +321,7 @@
                       <li> It can take 2 - 6 business days to prepare the sign for shipping</li>
                       <li> Signs come with the essentials for a drill install (Epoxy not included)</li>
                      <li> We allow deffered payments for pickup but not for delivery, you will find the deffered payment on the 3rd stage of the checkout step</li>
+                      <li> For LED backlit orders instructions will be provided if you plan to install yourself</li>
                      
                     
                   </div>
@@ -618,13 +619,13 @@ export default {
       LED: ["Yes", "No"],
       install: ["Yes", "No"],
       location: [
-        "Halton +$100",
-        "Hamilton +$120",
-        "Peel +$100",
-        "City of Toronto +$120",
-        "York +$120",
-        "Durham +$140",
-        "Kitchener/Waterloo/Guelph/Cambridge/Other +$140",
+        "Halton +$120",
+        "Hamilton +$140",
+        "Peel +$120",
+        "City of Toronto +$140",
+        "York +$140",
+        "Durham +$150",
+        "Kitchener/Waterloo/Guelph/Cambridge/Other +$150",
       ],
       pickup: "",
       payNow: ["Yes", "No"],
@@ -674,21 +675,21 @@ export default {
     LocationPrice: function() {
       if (this.items.isColor.color == "Black Matte +$10") {
         if (
-          (this.isInstall == "Yes" && this.isLocation == "Halton +$100") ||
-          (this.isInstall == "Yes" && this.isLocation == "Peel +$100")
+          (this.isInstall == "Yes" && this.isLocation == "Halton +$120") ||
+          (this.isInstall == "Yes" && this.isLocation == "Peel +$120")
         ) {
-          return 110;
+          return 120;
         } else if (
           (this.isInstall == "Yes" &&
             this.isLocation == "City of Toronto +$120") ||
-          (this.isInstall == "Yes" && this.isLocation == "York +$120") ||
-          (this.isInstall == "Yes" && this.isLocation == "Hamilton +$120")
+          (this.isInstall == "Yes" && this.isLocation == "York +$140") ||
+          (this.isInstall == "Yes" && this.isLocation == "Hamilton +$140")
         ) {
-          return 130;
+          return 140;
         } else if (
-          (this.isInstall == "Yes" && this.isLocation == "Durham +$140") ||
+          (this.isInstall == "Yes" && this.isLocation == "Durham +$150") ||
           (this.isInstall == "Yes" &&
-            this.isLocation == "Kitchener/Waterloo/Guelph/Cambridge +$140")
+            this.isLocation == "Kitchener/Waterloo/Guelph/Cambridge +$150")
         ) {
           return 150;
         } else {
@@ -696,24 +697,24 @@ export default {
         }
       } else {
         if (
-          (this.isInstall == "Yes" && this.isLocation == "Halton +$100") ||
-          (this.isInstall == "Yes" && this.isLocation == "Peel +$100")
-        ) {
-          return 100;
-        } else if (
-          (this.isInstall == "Yes" &&
-            this.isLocation == "City of Toronto +$120") ||
-          (this.isInstall == "Yes" && this.isLocation == "York +$120") ||
-          (this.isInstall == "Yes" && this.isLocation == "Hamilton +$120")
+          (this.isInstall == "Yes" && this.isLocation == "Halton +$120") ||
+          (this.isInstall == "Yes" && this.isLocation == "Peel +$120")
         ) {
           return 120;
         } else if (
-          (this.isInstall == "Yes" && this.isLocation == "Durham +$140") ||
           (this.isInstall == "Yes" &&
-            this.isLocation ==
-              "Kitchener/Waterloo/Guelph/Cambridge/Other +$140")
+            this.isLocation == "City of Toronto +$140") ||
+          (this.isInstall == "Yes" && this.isLocation == "York +$140") ||
+          (this.isInstall == "Yes" && this.isLocation == "Hamilton +$140")
         ) {
           return 140;
+        } else if (
+          (this.isInstall == "Yes" && this.isLocation == "Durham +$150") ||
+          (this.isInstall == "Yes" &&
+            this.isLocation ==
+              "Kitchener/Waterloo/Guelph/Cambridge/Other +$150")
+        ) {
+          return 150;
         }
         return 0;
       }
@@ -1025,10 +1026,10 @@ export default {
       } else return "snipcart-add-item";
     },
     call() {
-      window.open("tel:6474084915");
+      window.open("tel:14165530850");
     },
     whatsappfunc: function() {
-      return (location.href = "https://wa.me/14168220044");
+      return (location.href = "https://wa.me/14165530850");
     },
   },
 };

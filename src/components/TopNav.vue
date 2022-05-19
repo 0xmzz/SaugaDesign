@@ -1,8 +1,8 @@
 <template>
   <div>
-    <v-alert color="#2A3B4D" dark dense>
+    <!-- <v-alert color="#2A3B4D" dark dense>
       The winter discount is back with 15% off all orders over $50!
-    </v-alert>
+    </v-alert> -->
     
 
     <v-app-bar>
